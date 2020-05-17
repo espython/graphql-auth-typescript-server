@@ -1,0 +1,6 @@
+{
+  "ignore": ["node_modules"],
+  "watch": ["dist"],
+  "exec": "yarn lint  && yarn start:dev",
+  "ext": "js"
+}
