@@ -15,19 +15,28 @@ class HelloResolver {
 
   @Query(() => String)
   async HelloName(@Arg("name") name: string) {
-    return `Hello ${name} i like you soooooooooo much beautiful very very hot hot cold`;
+    return `Hello ${name} i like you soooooooooooooooo`;
   }
 }
 
 const main = async () => {
-  await createConnection();
+  await createConnection({
+    type: "postgres",
+    url: process.env.PGSQL_URL,
+  });
   const schema = await buildSchema({
     resolvers: [HelloResolver],
   });
 
-  const apolloServer = new ApolloServer({ schema });
+  const apolloServer = new ApolloServer({
+    schema,
+    introspection: true,
+    playground: true,
+  });
 
   const app = Express();
+  // // The GraphQL endpoint
+  // app.use("/api/graphql", Express.json());
 
   apolloServer.applyMiddleware({ app });
 
