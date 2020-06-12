@@ -5,25 +5,30 @@ import { buildSchema, Resolver, Query, Arg } from "type-graphql";
 import { createConnection } from "typeorm";
 
 // import { RegisterResolver } from "./modules/user/Register";
-
 @Resolver()
 class HelloResolver {
-  @Query(() => String)
+  @Query(() => String) // eslint-disable-line 
   async helloWorld() {
     return "Hello World!";
   }
 
-  @Query(() => String)
+  @Query(() => String) // eslint-disable-line
   async HelloName(@Arg("name") name: string) {
     return `Hello ${name} i like you soooooooooooooooo`;
   }
 }
 
 const main = async () => {
-  await createConnection({
-    type: "postgres",
-    url: process.env.PGSQL_URL,
-  });
+  try {
+    // { online database
+    //   type: "postgres",
+    //   url: process.env.PGSQL_URL,
+    // }
+    await createConnection();
+  } catch (error) {
+    console.log("Error", error);
+  }
+
   const schema = await buildSchema({
     resolvers: [HelloResolver],
   });
