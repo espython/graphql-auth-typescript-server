@@ -1,8 +1,9 @@
 import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
-import Express from "express";
+import Express, { Request, Response } from "express";
 import { buildSchema, Resolver, Query, Arg } from "type-graphql";
 import { createConnection } from "typeorm";
+import { Context } from "./typesDef";
 
 // import { RegisterResolver } from "./modules/user/Register";
 @Resolver()
@@ -37,11 +38,13 @@ const main = async () => {
     schema,
     introspection: true,
     playground: true,
+    context: (req: Request, res: Response): Context => ({ req, res }),
   });
 
   const app = Express();
   // // The GraphQL endpoint
-  // app.use("/api/graphql", Express.json());
+  // app.use("/api/graphql",);
+  // apolloServer.graphqlPath = "/api/graphql";
 
   apolloServer.applyMiddleware({ app });
 

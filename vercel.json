@@ -1,0 +1,10 @@
+{
+  "builds": [
+    {
+      "src": "backend/src/index.ts",
+      "use": "@now/node",
+      "config": { "maxLambdaSize": "20mb" }
+    }
+  ],
+  "routes": [{ "src": "/graphql", "dest": "/backend/src/index.ts" }]
+}
