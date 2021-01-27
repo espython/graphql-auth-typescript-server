@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@types/passport": "^1.0.3",
-    "apollo-server-express": "^2.13.1",
+    "apollo-server-express": "^2.14.2",
     "apollo-server-micro": "^2.13.1",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.12.2",
