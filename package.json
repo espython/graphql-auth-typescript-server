@@ -19,7 +19,7 @@
     "apollo-server-express": "^2.13.1",
     "apollo-server-micro": "^2.13.1",
     "bcryptjs": "^2.4.3",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.14.0",
     "graphql": "^15.0.0",
     "micro": "^9.3.4",
     "passport": "^0.4.1",
